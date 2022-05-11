@@ -42,3 +42,10 @@ let removeOne = (word) => {
     .exec();
 }
 // 4. Import the models into any modules that need them
+
+module.exports = {
+  save: save,
+  getOne: getOne,
+  getAll: getAll,
+  removeOne: removeOne
+}
