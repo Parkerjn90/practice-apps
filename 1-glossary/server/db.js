@@ -5,7 +5,7 @@ const { color, log } = require('console-log-colors');
 const { bold, italic, underline, red, green, yellow, cyan, magenta, white } = color;
 
 // 1. Use mongoose to establish a connection to MongoDB
-mongoose.connect(`mongodb:http://localhost:${process.env.PORT}/${process.env.DB_NAME}`).then(function() {
+mongoose.connect(`mongodb://localhost:${process.env.PORT}/${process.env.DB_NAME}`).then(function() {
   log.cyan('connected to MongoDB');
 }).catch((err) => {
   log.red('unable to connect to MongoDB', err);
@@ -14,7 +14,7 @@ mongoose.connect(`mongodb:http://localhost:${process.env.PORT}/${process.env.DB_
 
 const wordSchema = new mongoose.Schema({
   word: 'String',
-  def: 'String'
+  definition: 'String'
 });
 
 const Word = mongoose.model('Word', wordSchema);
@@ -22,7 +22,7 @@ const Word = mongoose.model('Word', wordSchema);
 // create or update one
 let save = (word, newDef) => {
   log.bold(yellow(newDef));
-  return Word.findOneAndUpdate(word, {definition: newDef}, {upsert: true})
+  return Word.findOneAndUpdate({word: word}, {definition: newDef}, {upsert: true})
     .exec();
 }
 // get/get one
