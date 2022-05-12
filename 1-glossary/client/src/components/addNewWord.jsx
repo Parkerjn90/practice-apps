@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import axios from 'axios';
 
 class AddWord extends React.Component {
   constructor(props) {
@@ -14,11 +15,21 @@ class AddWord extends React.Component {
   inputHandler(e) {
     e.preventDefault();
     console.log(e.target.value);
+    this.setState({newWord: e.target.value})
   }
 
   clickHandler(e) {
     e.preventDefault();
     console.log('clicked again');
+    axios({
+      method: 'post',
+      url: '/addword',
+      data: this.state.newWord,
+      success: () => {
+        console.log('success');
+      },
+      contentType: 'string'
+    });
   }
 
   render() {
