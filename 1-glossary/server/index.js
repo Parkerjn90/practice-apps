@@ -30,7 +30,7 @@ app.post('/addword', (req, res) => {
     .then(() => {
       res.status(201).send('word was saved');
     }).catch((err) => {
-      res.status(404).send('word was not saved \n', err);
+      res.status(404).send(`word already added \n ${err}`);
     });
 });
 
@@ -39,7 +39,7 @@ app.get('/searchword', (req, res) => {
     .then((wordSearch) => {
       res.status(200).send(wordSearch);
     }).catch((err) => {
-      res.status(404).send('word is not included in db \n', err);
+      res.status(404).send(`word is not included in db \n ${err}`);
     })
 })
 
@@ -48,7 +48,7 @@ app.post('/searchword', (req, res) => {
     .then((wordSearch) => {
       res.status(201).send('word was found');
     }).catch((err) => {
-      res.status(404).send('word is not included in db \n', err);
+      res.status(404).send(`word is not included in db \n ${err}`);
     });
 });
 
@@ -57,7 +57,7 @@ app.patch('/searchword', (req, res) => {
     .then((newDef) => {
       res.status(204).send(newDef);
     }).catch((err) => {
-      res.status(400).send('definition not able to be changed');
+      res.status(400).send(`definition not able to be changed \n ${err}`);
     });
 });
 
@@ -66,7 +66,7 @@ app.delete('/searchword', (req, res) => {
     .then(() => {
       res.status(200).send('word successfully deleted');
     }).catch((err) => {
-      res.status(404).send('word is not included in db');
+      res.status(404).send(`word is not included in db \n ${err}`);
     });
 });
 
