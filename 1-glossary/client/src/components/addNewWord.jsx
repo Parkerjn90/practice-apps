@@ -6,7 +6,7 @@ class AddWord extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newWord: ''
+      word: ''
     }
     this.inputHandler = this.inputHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
@@ -14,21 +14,19 @@ class AddWord extends React.Component {
 
   inputHandler(e) {
     e.preventDefault();
-    console.log(e.target.value);
-    this.setState({newWord: e.target.value})
+    this.setState({word: e.target.value})
   }
 
   clickHandler(e) {
     e.preventDefault();
-    console.log('clicked again');
     axios({
       method: 'post',
       url: '/addword',
-      data: this.state.newWord,
+      data: this.state,
       success: () => {
         console.log('success');
       },
-      contentType: 'string'
+      contentType: 'application/json'
     });
   }
 
