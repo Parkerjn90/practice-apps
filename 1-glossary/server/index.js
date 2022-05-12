@@ -16,14 +16,6 @@ const app = express();
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
-app.get('/addword', (req, res) => {
-  getOne(req.body.word)
-    .then((wordEntry) => {
-      res.send(wordEntry);
-    }).catch((err) => {
-      res.status(404).send(err);
-    })
-});
 
 app.post('/addword', (req, res) => {
   save(req.body.word, req.body.definition)
@@ -35,9 +27,9 @@ app.post('/addword', (req, res) => {
 });
 
 app.get('/searchword', (req, res) => {
-  getOne(req.body.word)
-    .then((wordSearch) => {
-      res.status(200).send(wordSearch);
+  getAll()
+    .then((search) => {
+      res.status(200).send(search);
     }).catch((err) => {
       res.status(404).send(`word is not included in db \n ${err}`);
     })

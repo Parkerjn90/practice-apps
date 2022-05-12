@@ -37,9 +37,9 @@ let getOne = (word) => {
     .exec();
 }
 // find all
-let getAll = (word) => {
-  return Word.find({word})
-    .sort({field: 'word', test: -1})
+let getAll = () => {
+  return Word.find({})
+    .sort({updatedAt: 'desc', test: -1})
     .limit(15)
     .exec();
 }
