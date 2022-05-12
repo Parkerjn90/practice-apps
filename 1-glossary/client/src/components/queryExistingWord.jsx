@@ -8,37 +8,37 @@ class SearchWord extends React.Component {
     this.state = {
       word: '',
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.clickHandler = this.clickHandler.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.clickHandler = this.clickHandler.bind(this);
   }
 
-  handleChange(e) {
-    e.preventDefault();
-    this.setState({word: e.target.value});
-  }
+  // handleChange(e) {
+  //   e.preventDefault();
+  //   this.setState({word: e.target.value});
+  // }
 
-  clickHandler(e) {
-    e.preventDefault();
-    axios({
-      method: 'post',
-      url: '/searchword',
-      data: this.state,
-      contentType: 'application/json'
-    })
-    .then((response) => {
-      console.log(response);
-      // refresh the page to include the word on the screen
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-  }
+  // clickHandler(e) {
+  //   e.preventDefault();
+  //   axios({
+  //     method: 'post',
+  //     url: '/searchword',
+  //     data: this.state,
+  //     contentType: 'application/json'
+  //   })
+  //   .then((response) => {
+  //     console.log(response);
+  //     this.props.initialize(response.data);
+  //   })
+  //   .catch((err) => {
+  //     console.error(err);
+  //   })
+  // }
 
   render() {
     return (
       <div>
-        <p>Search Word:</p><input onChange={this.handleChange}/>
-        <button onClick={this.clickHandler}>Search</button>
+        <p>Search Word:</p><input onChange={this.props.handleChange}/>
+        <button onClick={this.props.clickHandler}>Search</button>
         <p>{this.state.response}</p>
       </div>
     )
