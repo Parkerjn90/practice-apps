@@ -1,6 +1,7 @@
 import React from 'react';
+import {render} from 'react-dom';
 
-class searchWord extends React.Component {
+class SearchWord extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -18,4 +19,4 @@ class searchWord extends React.Component {
   }
 }
 
-export default searchWord;
+export default SearchWord;

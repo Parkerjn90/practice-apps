@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM, { render } from "react-dom";
-import addWord from './components/addNewWord.jsx';
-import searchWord from './components/queryExistingWord.jsx';
-import glossaryView from './components/glossaryView.jsx';
+import AddWord from './components/addNewWord.jsx';
+import SearchWord from './components/queryExistingWord.jsx';
+import GlossaryView from './components/glossaryView.jsx';
 
 class Glossary extends React.Component {
   constructor(props) {
@@ -23,10 +23,10 @@ class Glossary extends React.Component {
         <h1>Glossary App</h1>
         </header>
         <div>
-        <addNewWord></addNewWord>
+          <AddWord></AddWord>
           <div>
-            <searchNewWord></searchNewWord>
-            <glossaryView entries={this.state.wordEntries}></glossaryView>
+            <SearchWord></SearchWord>
+            <GlossaryView entries={this.state.wordEntries}></GlossaryView>
           </div>
         </div>
       </div>

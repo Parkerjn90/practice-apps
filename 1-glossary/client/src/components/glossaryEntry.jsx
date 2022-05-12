@@ -1,8 +1,9 @@
 import React from 'react';
+import {render} from 'react-dom'
 
-const glossaryEntry = (props) => {
+const GlossaryEntry = (props) => {
 
-  render () {
+
     return (
       <div>
         <dl>
@@ -13,8 +14,6 @@ const glossaryEntry = (props) => {
         <button>Delete</button>
       </div>
     )
-  }
-
 }
 
-export default glossaryEntry;
+export default GlossaryEntry;

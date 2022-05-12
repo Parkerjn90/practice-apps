@@ -1,6 +1,7 @@
 import React from 'react';
+import { render } from 'react-dom';
 
-class addWord extends React.Component {
+class AddWord extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,12 +12,12 @@ class addWord extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" name="add" id="name">Word:</input>
-        <input type="text" name="definition" id="definition">Definition:</input>
-        <button>Add Word</button>
+          <input type="text" id="entry" name="entry">Word:</input>
+          <input type="text" id="def" name="def">Definition:</input>
+          <button>Add Word</button>
       </div>
     )
   }
 }
 
-export default addWord;
+export default AddWord;

@@ -1,19 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import glossaryEntry from './glossaryEntry.jsx';
+import GlossaryEntry from './glossaryEntry.jsx';
 
-const glossary = (props) => {
+const GlossaryView = (props) => {
 
-  render () {
     return (
       <div>
         {props.entries.map((entry, i) => ( //  will need to get rid of i when pulling real data (will have id key)
-          <glossaryEntry key={i} entry={entry}></glossaryEntry>  // will need to change i to entry.id
+          <GlossaryEntry key={i} entry={entry}></GlossaryEntry>  // will need to change i to entry.id
         ))}
       </div>
     )
-  };
-
 }
 
-export default glossaryView;
+export default GlossaryView;
