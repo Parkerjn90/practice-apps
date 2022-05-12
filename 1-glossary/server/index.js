@@ -46,7 +46,7 @@ app.get('/searchword', (req, res) => {
 app.post('/searchword', (req, res) => {
   getOne(req.body.word)
     .then((wordSearch) => {
-      res.status(201).send('word was found');
+      res.status(201).send('word found');
     }).catch((err) => {
       res.status(404).send(`word is not included in db \n ${err}`);
     });

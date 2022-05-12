@@ -13,16 +13,22 @@ mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`).then(function() {
 // 2. Set up any schema and models needed by the app
 
 const wordSchema = mongoose.Schema({
-  word: 'String',
-  definition: 'String'
-});
+  word: {
+    type: 'String',
+    unique: true,
+    required: true
+  },
+  definition: {
+    type: 'String',
+    required: true
+  },
+}, { timestamps: true });
 
 const Word = mongoose.model('Word', wordSchema);
 // 3. Export the models
 // create or update one
-let save = (word, newDef) => {
-  log.bold(yellow(newDef));
-  return Word.findOneAndUpdate({word: word}, {definition: newDef}, {upsert: true})
+let save = (word, definition) => {
+  return Word.findOneAndUpdate({word}, {definition}, {upsert: true})
     .exec();
 }
 // get/get one
@@ -31,8 +37,8 @@ let getOne = (word) => {
     .exec();
 }
 // find all
-let getAll = () => {
-  return Word.find()
+let getAll = (word) => {
+  return Word.find({word})
     .sort({field: 'word', test: -1})
     .limit(15)
     .exec();
