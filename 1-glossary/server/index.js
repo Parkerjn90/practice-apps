@@ -35,19 +35,39 @@ app.post('/addword', (req, res) => {
 });
 
 app.get('/searchword', (req, res) => {
-
-});
+  getOne(req.body.word)
+    .then((wordSearch) => {
+      res.status(200).send(wordSearch);
+    }).catch((err) => {
+      res.status(404).send('word is not included in db \n', err);
+    })
+})
 
 app.post('/searchword', (req, res) => {
-
+  getOne(req.body.word)
+    .then((wordSearch) => {
+      res.status(201).send('word was found');
+    }).catch((err) => {
+      res.status(404).send('word is not included in db \n', err);
+    });
 });
 
 app.patch('/searchword', (req, res) => {
-
+  save(req.body.word, req.body.definition)
+    .then((newDef) => {
+      res.status(204).send(newDef);
+    }).catch((err) => {
+      res.status(400).send('definition not able to be changed');
+    });
 });
 
 app.delete('/searchword', (req, res) => {
-
+  removeOne(req.body.word)
+    .then(() => {
+      res.status(200).send('word successfully deleted');
+    }).catch((err) => {
+      res.status(404).send('word is not included in db');
+    });
 });
 
 app.listen(process.env.PORT);
