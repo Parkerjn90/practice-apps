@@ -7,10 +7,12 @@ const glossary = (props) => {
   render () {
     return (
       <div>
-        <glossaryEntry></glossaryEntry>
+        {props.entries.map((entry, i) => ( //  will need to get rid of i when pulling real data (will have id key)
+          <glossaryEntry key={i} entry={entry}></glossaryEntry>  // will need to change i to entry.id
+        ))}
       </div>
     )
-  }
+  };
 
 }
 

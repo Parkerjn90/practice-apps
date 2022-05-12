@@ -8,7 +8,11 @@ class Glossary extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-    wordEntries: [{word: banana, definition: sweet yellow fruit}, {word: apple, definition: sweet, crunchy fruit}, {word: orange, definition: sweet and sour citrus fruit}]
+    wordEntries: [  // don't forget to remove sample data
+      {word: 'banana', definition: 'sweet yellow fruit'},
+      {word: 'apple', definition: 'sweet, crunchy fruit'},
+      {word: 'orange', definition: 'sweet and sour citrus fruit'}
+    ]
   };
 }
 
@@ -22,7 +26,7 @@ class Glossary extends React.Component {
         <addNewWord></addNewWord>
           <div>
             <searchNewWord></searchNewWord>
-            <glossaryView></glossaryView>
+            <glossaryView entries={this.state.wordEntries}></glossaryView>
           </div>
         </div>
       </div>
