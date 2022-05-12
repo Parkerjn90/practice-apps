@@ -8,14 +8,34 @@ class Glossary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wordEntries: [  // don't forget to remove sample data
-        { word: 'banana', definition: 'sweet yellow fruit' },
-        { word: 'apple', definition: 'sweet, crunchy fruit' },
-        { word: 'orange', definition: 'sweet and sour citrus fruit' }
-      ]
+      wordEntries: []
     };
+    this.initialize = this.initialize.bind(this);
+    this.remove = this.remove.bind(this);
+    this.edit = this.edit.bind(this);
   }
 
+  initialize() {
+    axios({
+      method: 'get',
+      url: '/searchword',
+      contentType: 'application/json'
+    })
+    .then((wordResponse) => {
+      this.setState(wordResponse);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
+
+  remove() {
+
+  }
+
+  edit() {
+
+  }
 
   render() {
     return (
@@ -24,11 +44,11 @@ class Glossary extends React.Component {
           <h1>Personal Glossary App</h1>
         </header>
         <div>
-          <AddWord></AddWord>
+          <AddWord initialize={this.initialize}></AddWord>
         </div>
         <div>
-          <SearchWord></SearchWord>
-          <GlossaryView entries={this.state.wordEntries}></GlossaryView>
+          <SearchWord initialize={this.initialize}></SearchWord>
+          <GlossaryView entries={this.state.wordEntries} remove={this.remove} edit={this.edit}></GlossaryView>
         </div>
       </div>
     )
