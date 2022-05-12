@@ -46,8 +46,8 @@ app.post('/searchword', (req, res) => {
 
 app.patch('/searchword', (req, res) => {
   save(req.body.word, req.body.definition)
-    .then((newDef) => {
-      res.status(204).send(newDef);
+    .then(() => {
+      res.status(204).send('word saved successfully');
     }).catch((err) => {
       res.status(400).send(`definition not able to be changed \n ${err}`);
     });
