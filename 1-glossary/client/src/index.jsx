@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM, { render } from "react-dom";
 import addWord from './components/addNewWord.jsx';
 import searchWord from './components/queryExistingWord.jsx';
+import glossaryView from './components/glossaryView.jsx';
 
 class Glossary extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-    wordEntries: []
+    wordEntries: [{word: banana, definition: sweet yellow fruit}, {word: apple, definition: sweet, crunchy fruit}, {word: orange, definition: sweet and sour citrus fruit}]
   };
 }
 
@@ -16,9 +17,14 @@ class Glossary extends React.Component {
       <div>
         <header>
         <h1>Glossary App</h1>
-        <addNewWord></addNewWord>
-        <searchNewWord></searchNewWord>
         </header>
+        <div>
+        <addNewWord></addNewWord>
+          <div>
+            <searchNewWord></searchNewWord>
+            <glossaryView></glossaryView>
+          </div>
+        </div>
       </div>
    )
   }
