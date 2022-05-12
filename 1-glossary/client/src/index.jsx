@@ -1,9 +1,28 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM, { render } from "react-dom";
+import addNewWord from './components/addNewWord.jsx';
+import queryExistingWord from './components/queryExistingWord.jsx';
 
-render(
-  <div>
-    <p>Hello, World!</p>
-  </div>,
-  document.getElementById("root")
-);
+class Glossary extends React.Component {
+  constructor(props) {
+  super(props);
+  this.state = {
+    wordEntries: []
+  };
+}
+
+  render() {
+    return (
+      <div>
+        <header>
+        <h1>Glossary App</h1>
+        <
+        </header>
+      </div>
+   )
+  }
+}
+
+export default Glossary;
+
+ReactDOM.render(<Glossary />, document.getElementById('root'));
