@@ -4,6 +4,14 @@ import glossaryEntry from './glossaryEntry.jsx';
 
 const glossary = (props) => {
 
+  render () {
+    return (
+      <div>
+        <glossaryEntry></glossaryEntry>
+      </div>
+    )
+  }
+
 }
 
-export default glossary;
+export default glossaryView;
