@@ -6,31 +6,32 @@ import GlossaryView from './components/glossaryView.jsx';
 
 class Glossary extends React.Component {
   constructor(props) {
-  super(props);
-  this.state = {
-    wordEntries: [  // don't forget to remove sample data
-      {word: 'banana', definition: 'sweet yellow fruit'},
-      {word: 'apple', definition: 'sweet, crunchy fruit'},
-      {word: 'orange', definition: 'sweet and sour citrus fruit'}
-    ]
-  };
-}
+    super(props);
+    this.state = {
+      wordEntries: [  // don't forget to remove sample data
+        { word: 'banana', definition: 'sweet yellow fruit' },
+        { word: 'apple', definition: 'sweet, crunchy fruit' },
+        { word: 'orange', definition: 'sweet and sour citrus fruit' }
+      ]
+    };
+  }
+
 
   render() {
     return (
       <div>
         <header>
-        <h1>Glossary App</h1>
+          <h1>Personal Glossary App</h1>
         </header>
         <div>
           <AddWord></AddWord>
-          <div>
-            <SearchWord></SearchWord>
-            <GlossaryView entries={this.state.wordEntries}></GlossaryView>
-          </div>
+        </div>
+        <div>
+          <SearchWord></SearchWord>
+          <GlossaryView entries={this.state.wordEntries}></GlossaryView>
         </div>
       </div>
-   )
+    )
   }
 }
 

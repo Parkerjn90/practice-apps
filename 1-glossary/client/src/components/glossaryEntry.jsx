@@ -7,11 +7,10 @@ const GlossaryEntry = (props) => {
     return (
       <div>
         <dl>
-          <dt>{props.entry.word}</dt>
+          <dt><b>{props.entry.word}</b></dt>
           <dd>{props.entry.definition}</dd>
         </dl>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button>Edit</button><button>Delete</button>
       </div>
     )
 }
