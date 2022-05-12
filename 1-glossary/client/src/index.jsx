@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM, { render } from "react-dom";
-import addNewWord from './components/addNewWord.jsx';
-import queryExistingWord from './components/queryExistingWord.jsx';
+import addWord from './components/addNewWord.jsx';
+import searchWord from './components/queryExistingWord.jsx';
 
 class Glossary extends React.Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class Glossary extends React.Component {
       <div>
         <header>
         <h1>Glossary App</h1>
-        <
+        <addNewWord></addNewWord>
+        <searchNewWord></searchNewWord>
         </header>
       </div>
    )
