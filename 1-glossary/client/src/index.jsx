@@ -3,6 +3,7 @@ import ReactDOM, { render } from "react-dom";
 import AddWord from './components/addNewWord.jsx';
 import SearchWord from './components/queryExistingWord.jsx';
 import GlossaryView from './components/glossaryView.jsx';
+import axios from 'axios';
 
 class Glossary extends React.Component {
   constructor(props) {
@@ -22,7 +23,8 @@ class Glossary extends React.Component {
       contentType: 'application/json'
     })
     .then((wordResponse) => {
-      this.setState(wordResponse);
+      console.log(wordResponse);
+      this.setState({wordEntries: wordResponse.data});
     })
     .catch((err) => {
       console.error(err);

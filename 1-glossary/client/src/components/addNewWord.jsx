@@ -27,7 +27,13 @@ class AddWord extends React.Component {
         console.log('success');
       },
       contentType: 'application/json'
-    });
+    })
+    .then(() => {
+      this.props.initialize();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
   }
 
   render() {
