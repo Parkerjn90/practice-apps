@@ -15,8 +15,6 @@ class Glossary extends React.Component {
     this.initialize = this.initialize.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
-    // this.remove = this.remove.bind(this);
-    // this.edit = this.edit.bind(this);
   }
 
   initialize() {
