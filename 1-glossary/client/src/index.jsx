@@ -9,14 +9,14 @@ class Glossary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wordEntries: [],
+      wordEntries: [{word: 'banana', definition: 'fruit'}],
       selectedWord: ''
     };
     this.initialize = this.initialize.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
-    this.remove = this.remove.bind(this);
-    this.edit = this.edit.bind(this);
+    // this.remove = this.remove.bind(this);
+    // this.edit = this.edit.bind(this);
   }
 
   initialize() {
@@ -56,25 +56,6 @@ class Glossary extends React.Component {
     })
   }
 
-  remove(currentWord) {
-    axios({
-      method: 'delete',
-      url: '/searchword',
-      data: currentWord, // word to which the button is attached,
-      contentType: 'application/json'
-    })
-    .then(() => {
-      this.initialize();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-  }
-
-  edit() {
-
-  }
-
   render() {
     return (
       <div>
@@ -86,7 +67,7 @@ class Glossary extends React.Component {
         </div>
         <div>
           <SearchWord initialize={this.initialize} handleChange={this.handleChange} clickHandler={this.clickHandler}></SearchWord>
-          <GlossaryView entries={this.state.wordEntries} remove={this.remove} edit={this.edit}></GlossaryView>
+          <GlossaryView entries={this.state.wordEntries} initialize={this.initialize}></GlossaryView>
         </div>
       </div>
     )

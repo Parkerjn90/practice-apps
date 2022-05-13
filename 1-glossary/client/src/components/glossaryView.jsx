@@ -6,8 +6,8 @@ const GlossaryView = (props) => {
 
     return (
       <div>
-        {props.entries.map((entry, i) => ( //  will need to get rid of i when pulling real data (will have id key)
-          <GlossaryEntry key={i} entry={entry}></GlossaryEntry>  // will need to change i to entry.id
+        {props.entries.map((entry) => ( //  will need to get rid of i when pulling real data (will have id key)
+          <GlossaryEntry key={entry._id} entry={entry} initialize={props.initialize}></GlossaryEntry>  // will need to change i to entry.id
         ))}
       </div>
     )
