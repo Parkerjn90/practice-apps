@@ -14,3 +14,5 @@ const userInfoForm = (props) => {
     </div>
   )
 }
+
+export default userInfoForm;

@@ -19,3 +19,5 @@ const shippingInfoForm = (props) => {
     </div>
   )
 }
+
+export default shippingInfoForm;

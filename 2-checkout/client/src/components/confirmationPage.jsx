@@ -16,3 +16,5 @@ const confirmationPage = ({props}) => {
     </div>
   )
 }
+
+export default confirmationPage;

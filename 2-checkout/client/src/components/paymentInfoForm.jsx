@@ -15,3 +15,5 @@ const paymentInfoForm = (props) => {
     </div>
   )
 }
+
+export default paymentInfoForm;
