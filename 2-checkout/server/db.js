@@ -16,24 +16,36 @@ db.connectAsync()
   .then(() =>
     // Expand this table definition as needed:
     db.queryAsync(
-      `CREATE TABLE IF NOT EXISTS responses (id INT NOT NULL AUTO_INCREMENT ,
-        session_id TEXT,
+      CREATE TABLE IF NOT EXISTS responses(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        session_id TEXT NULL,
         username TEXT,
-        email TEXT,
-        password TEXT,
-        address_line1 TEXT,
-        address_line2 TEXT,
-        city TEXT,
-        state TEXT,
-        address_zip INT,
-        card_num NUMBER,
-        exp_date DATE,
-        cvv INT,
-        billing_zip INT,
-        PRIMARY KEY ('id'))`
+        email TEXT NULL,
+        password TEXT NULL,
+        address_line1 TEXT NULL,
+        address_line2 TEXT NULL,
+        city TEXT NOT NULL,
+        us_state TEXT NOT NULL,
+        shipping_zip INT NOT NULL,
+        card_num INT NOT NULL,
+        exp_date DATE NOT NULL,
+        cvv INT NOT NULL,
+        billing_zip INT NOT NULL
+      );
     )
   )
   .then(() => console.log('success'))
   .catch((err) => console.log(err))
+
+db.addNewUser(userInfo)
+  .then((userInfo) => {
+    {session_id, username, email, password, address_line1, address_line2, city, us_state, shipping_zip, card_num, exp_date, cvv, billing_zip} = userInfo;
+    db.queryAsync(
+      INSERT INTO responses(session_id, username, email, password, address_line1, address_line2, city, us_state, shipping_zip, card_num, exp_date, cvv, billing_zip)
+      VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [session_id, username, email, password, address_line1, address_line2, city, us_state, shipping_zip, card_num, exp_date, cvv, billing_zip];
+    )
+  })
+   .then(() => console.log('user info saved to db'))
+   .catch((err) => console.error(err));
 
 module.exports = db;
