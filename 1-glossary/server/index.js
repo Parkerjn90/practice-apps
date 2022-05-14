@@ -41,7 +41,7 @@ app.get('/searchword', (req, res) => {
     })
 })
 
-app.post('/searchword', (req, res) => {
+app.get('/searchoneword', (req, res) => {
   getOne(req.body.word)
     .then((wordSearch) => {
       res.status(201).send('word found');
