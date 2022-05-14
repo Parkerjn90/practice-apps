@@ -23,9 +23,19 @@ app.use(logger);
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
-app.post('/', (req, res) => {
+app.post('/checkout', (req, res) => {
+  var sql = 'INSERT INTO responses SET ?'
   // take in req body
+  var userInfo = req.body // may need to destructure?
   // send to database
+  db.query(sql, userInfo, (err, result) => {
+    if (err) {
+      throw err;
+      console.log(err);''
+    } else {
+    res.send(result);
+    }
+  })
   // on success
     // send back success message
   // on error
